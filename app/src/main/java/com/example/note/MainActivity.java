@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements deleteNote {
 RecyclerView recyclerView;
 viewModel viewModel;
 FloatingActionButton fb;
-String KEY="hello";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,6 @@ String KEY="hello";
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter adapter=new adapter(this,this);
         recyclerView.setAdapter(adapter);
-        String message="HI I am girish";
         viewModel=new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(viewModel.class);
         viewModel.getAllNotes().observe(this, notes -> {
             if(notes!=null)
@@ -45,9 +44,7 @@ String KEY="hello";
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,addNote.class);
-                intent.putExtra(KEY,message);
                 startActivity(intent);
-
             }
         });
     }
